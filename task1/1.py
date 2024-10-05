@@ -12,8 +12,10 @@ print(f'Скалярное произведение: {scalar_product}')
 # Часть 2
 print("Часть 2 ----------------------------------------------------------------------")
 
-array = np.array([[-5, 30], [-4.3, 15], [9, 3], [11, 3.3], [-3, 3],
+
+array_start = np.array([[-5, 30], [-4.3, 15], [9, 3], [11, 3.3], [-3, 3],
                   [12, 4], [13, 5], [14, 5.9], [-1, 1], [12.2, 4.4]])
+array = array_start
 
 vector_w = input("Введите вектор из двух чисел (через пробел): ").split(" ")
 vector_w = np.array(vector_w, dtype=float)
@@ -42,7 +44,9 @@ vector_accuracy = [0, 0, 1, 1, 0, 1, 1, 1, 0, 1]
 for i in range(len(array)):
     vector_errors.append(vector_accuracy[i] - array[i][2])
 
-while min(vector_errors[i in range(len(array))]) > 0.001:
+print("vector_errors: ", vector_errors)
+
+while min(vector_errors) < -0.001 or max(vector_errors) > 0.001:
 
     delta_w1 = 0
     delta_w2 = 0
@@ -50,16 +54,15 @@ while min(vector_errors[i in range(len(array))]) > 0.001:
     for i in range(len(array)):
         delta_w1 += vector_errors[i] * 0.1 * array[i][0]
         delta_w2 += vector_errors[i] * 0.1 * array[i][1]
-        print(f'Дельта w1: {delta_w1:.4f}, Дельта w2: {delta_w2:.4f}')
+        # print(f'Дельта w1: {delta_w1:.4f}, Дельта w2: {delta_w2:.4f}')
 
     new_w1 = vector_w[0] + delta_w1
     new_w2 = vector_w[1] + delta_w2
 
     print(f'Обновлённые веса: w1 = {new_w1:.4f}, w2 = {new_w2:.4f}')
-    vector_errors = []
+    vector_w = np.array([new_w1, new_w2])
 
-    for i in range(len(array)):
-        vector_errors.append(vector_accuracy[i] - array[i][2])
+    array = array_start.tolist()
 
     for nums in array:
         temp = np.dot(nums, vector_w)
@@ -67,3 +70,15 @@ while min(vector_errors[i in range(len(array))]) > 0.001:
             nums.append(1)
         else:
             nums.append(0)
+    
+    print(f'|{"X":>5} | {"Y":>5} | {"Label":>5}|')
+    print('-' * 23)
+    for nums in array:
+        print(f'|{nums[0]:>5.2f} | {nums[1]:>5.2f} | {nums[2]:>5}|')
+    
+    vector_errors = []
+    for i in range(len(array)):
+        vector_errors.append(vector_accuracy[i] - array[i][2])
+
+    print("vector_errors: ", vector_errors)
+
