@@ -2,3 +2,4 @@ emotions.csv
 edit_emotions.csv
 token_emotion.csv
 lemma_emotion.csv
+token_lemma_filter_emotion.csv
