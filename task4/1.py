@@ -54,7 +54,6 @@ while min(vector_errors) < -0.001 or max(vector_errors) > 0.001:
     for i in range(len(array)):
         delta_w1 += vector_errors[i] * 0.1 * array[i][0]
         delta_w2 += vector_errors[i] * 0.1 * array[i][1]
-        # print(f'Дельта w1: {delta_w1:.4f}, Дельта w2: {delta_w2:.4f}')
 
     new_w1 = vector_w[0] + delta_w1
     new_w2 = vector_w[1] + delta_w2
