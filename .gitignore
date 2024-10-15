@@ -1,7 +1,10 @@
 emotions.csv
-edit_emotions.csv
-token_emotion.csv
-lemma_emotion.csv
-token_lemma_filter_emotion.csv
-september.csv
-token_lemma_filter_emotion_token.csv
+
+september/csv
+september/ignore
+september/result
+
+october/csv
+october/ignore
+october/result
+*.txt
