@@ -8,3 +8,4 @@ october/csv
 october/ignore
 october/result
 *.txt
+*.csv
