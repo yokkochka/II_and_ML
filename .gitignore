@@ -1,1 +1,10 @@
 emotions.csv
+
+september/csv
+september/ignore
+september/result
+
+october/csv
+october/ignore
+october/result
+*.txt
